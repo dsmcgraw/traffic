@@ -5,8 +5,9 @@ Predicting highway traffic using LSTMs
 
 Project Organization
 --------------------
-
+```
 .
+
 ├── AUTHORS.md
 
 ├── LICENSE
@@ -41,7 +42,6 @@ Project Organization
 
     ├── data           <- scripts and programs to process data
 	
-	
     ├── external       <- Any external source code, e.g., pull other git projects, or external libraries
 	
     ├── models         <- Source code for your own model
@@ -52,5 +52,5 @@ Project Organization
 	
 └── working            <- Temporary files.
 
-
+```
 
