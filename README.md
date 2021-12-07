@@ -36,7 +36,7 @@ Project Organization
 
 ├── reports            <- For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports
 
-│   └── figures        <- Figures for the manuscript or reports
+│   └── figures        <- Figures for the manuscript or reports
 
 └── src                <- Source code for this project
 
@@ -54,3 +54,10 @@ Project Organization
 
 ```
 
+<img title="train test predictions" src="train_test_results.png">
+
+# Train and Test Results
+<img title="train test predictions" src="c:\\Users\\David\\OneDrive\\projects\\portfolio\\traffic\\reports/figures/train_test_results.png">
+
+# Test Results
+<img title="test predictions" src="c:\\Users\\David\\OneDrive\\projects\\portfolio\\traffic\\reports/figures/test_results.png">
