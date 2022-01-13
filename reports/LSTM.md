@@ -649,6 +649,30 @@ predict (`n_forecast = 2`).
 
 Also, as recommended in many other tutorials, I added a dropout layer between each layer to reduce overfitting.
 
+```python
+from keras.models import Sequential # Deep learning library, used for neural networks
+from keras.layers import LSTM, Dense, Dropout # Deep learning classes for recurrent and regular densely-connected layers
+from keras.callbacks import EarlyStopping # EarlyStopping during model training
+
+LSTMmodel = Sequential()
+
+n_neurons = X_train.shape[1] * X_train.shape[2]
+dense_neurons = y_train.shape[1]
+
+LSTMmodel.add(LSTM(n_neurons, return_sequences=True, input_shape=(X_train.shape[1], X_train.shape[2])))
+LSTMmodel.add(Dropout(0.3))
+LSTMmodel.add(LSTM(n_neurons, return_sequences=True))
+LSTMmodel.add(Dropout(0.3))
+LSTMmodel.add(LSTM(n_neurons, return_sequences=True))
+LSTMmodel.add(Dropout(0.3))
+LSTMmodel.add(LSTM(n_neurons, return_sequences=False))
+LSTMmodel.add(Dropout(0.3))
+LSTMmodel.add(Dense(dense_neurons))
+
+# Compile the model
+LSTMmodel.compile(optimizer='adam', loss='mse')
+```
+
 My final model has an initial input layer, three hidden layers, and a dense output layer:
 ```python
 >>>LSTMmodel.summary()
