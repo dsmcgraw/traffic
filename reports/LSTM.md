@@ -359,14 +359,14 @@ as a subset of the data used to make one prediction. To make a prediction we nee
 an X and a y array. Starting with our scaled training data (x_train_scaled), we can use
 this data for batch 0:
 
-![Batch 0](figures/train test batches/batch0.png)
+![Batch 0](figures/train%20test%20batches/batch0.png)
 
 So the first batch contains rows 0, 1, 2 for part of the X array and rows 3, 4 (and
 column 0 only) for the y array.
 
 The second batch (batch 1) contains rows 1, 2, 3 for X and rows 4, 5 (col 0) for y:
 
-![Batch 1](figures/train test batches/batch1.PNG)
+![Batch 1](figures/train%20test%20batches/batch1.PNG)
 
 A little bit of algebra can show us that for a data set with num_rows total, there will
 be `num_rows - n_obs - n_forecast + 1` batches. In our dummy example the training data
@@ -376,9 +376,9 @@ set will have `15 - 3 - 2 + 1 = 11` batches and the testing data will have
 More broadly, the following diagrams illustrate where batches 0, 1, and 10 for the
 training data fit into the larger picture:
 
-![Batch 0 for LSTM](figures/train test batches/batch0_with_array.png)
-![Batch 1 for LSTM](figures/train test batches/batch1_with_array.png)
-![Batch 10 for LSTM](figures/train test batches/batch10_with_array.png)
+![Batch 0 for LSTM](figures/train%20test%20batches/batch0_with_array.png)
+![Batch 1 for LSTM](figures/train%20test%20batches/batch1_with_array.png)
+![Batch 10 for LSTM](figures/train%20test%20batches/batch10_with_array.png)
 
 My approach to building the 3D arrays for X_train, y_train, X_test, and y_test is to
 create an empty numpy array for each and populate it slice by slice by iterating through the
@@ -578,7 +578,7 @@ for i in range(n_batches):
 
 Your data transformation process should look like:
 
-![Data Transformation](figures/train test batches/data_transformation.PNG)
+![Data Transformation](figures/train%20test%20batches/data_transformation.PNG)
 
 All of this using dummy data was simply to illustrate the process. For my actual analysis,
 described above, my original data set was 2886 rows and 20 columns after downsampling and
