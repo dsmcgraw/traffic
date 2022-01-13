@@ -108,3 +108,6 @@ bin/
 
 # exclude external models from source control
 /src/external/
+
+# exclude download data shell script
+dl_FAST.sh
