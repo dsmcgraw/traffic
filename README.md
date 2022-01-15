@@ -3,6 +3,9 @@ traffic
 
 Predicting highway traffic using LSTMs
 
+See [LSTM Modeling](reports/LSTM.md) for full description.
+
+
 Project Organization
 --------------------
 ```
@@ -54,4 +57,3 @@ Project Organization
 
 ```
 
-See [LSTM Modeling](reports/LSTM.md)
