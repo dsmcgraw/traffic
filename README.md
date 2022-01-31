@@ -12,7 +12,7 @@ I focused on developing predictions at one site on I-15 south of Las Vegas.
 If this approach were to be used in production I would need to develop a model
 for each of the several hundred sites in the Las Vegas metro area.
 
-![LV Detector Locations](figures/detector_locations.png)
+![LV Detector Locations](reports/figures/detector_locations.png)
 
 
 ## Data Cleaning
@@ -125,7 +125,7 @@ file in the 'processed' directory. The data look like:
 | 2021-10-26 20:40:00 |                84.44 |                 2.90 |        0.50 |                   84.20 |                    2.50 |           0.30 |                   83.89 |                    1.90 |           0.30 | 20.00 |     -0.71 |      0.71 |       1.00 |       0.00 |       0.00 |       0.00 |       0.00 |       0.00 |     -0.90 |      0.44 |
 | 2021-10-26 20:50:00 |                81.56 |                 2.67 |        0.22 |                   83.62 |                    2.22 |           0.33 |                   81.25 |                    3.11 |           0.78 | 20.00 |     -0.71 |      0.71 |       1.00 |       0.00 |       0.00 |       0.00 |       0.00 |       0.00 |     -0.90 |      0.44 |
 
-![Raw Data](figures/Data_plots.png)
+![Raw Data](reports/figures/Data_plots.png)
 
 This dataset becomes the starting point for the next step: modeling.
 
@@ -201,9 +201,9 @@ data['beta'] = data['beta'] + 200
 data['gamma'] = data['gamma'] + 300
 data
 ```
-![Dummy Data](figures/dummydata_24rows.png)
+![Dummy Data](reports/figures/dummydata_24rows.png)
 
-![Dummy Data plot](figures/data_plot.png)
+![Dummy Data plot](reports/figures/data_plot.png)
 
 ### Train/Test Split
 
@@ -321,7 +321,7 @@ x_test_scaled
 ```
 
 Plots (first column is the scaled training data, second column is scaled test data).
-![Train/Test Data Scaled](figures/train_test_scaled.png)
+![Train/Test Data Scaled](reports/figures/train_test_scaled.png)
 
 You may notice from the data or plots that even though I scaled the data between -1 and 1,
 some of the scaled test data exceeds those limits. This is OK, since the scaler
@@ -359,14 +359,14 @@ as a subset of the data used to make one prediction. To make a prediction we nee
 an X and a y array. Starting with our scaled training data (x_train_scaled), we can use
 this data for batch 0:
 
-![Batch 0](figures/train%20test%20batches/batch0.PNG)
+![Batch 0](reports/figures/train%20test%20batches/batch0.PNG)
 
 So the first batch contains rows 0, 1, 2 for part of the X array and rows 3, 4 (and
 column 0 only) for the y array.
 
 The second batch (batch 1) contains rows 1, 2, 3 for X and rows 4, 5 (col 0) for y:
 
-![Batch 1](figures/train%20test%20batches/batch1.PNG)
+![Batch 1](reports/figures/train%20test%20batches/batch1.PNG)
 
 A little bit of algebra can show us that for a data set with num_rows total, there will
 be `num_rows - n_obs - n_forecast + 1` batches. In our dummy example the training data
@@ -376,9 +376,9 @@ set will have `15 - 3 - 2 + 1 = 11` batches and the testing data will have
 More broadly, the following diagrams illustrate where batches 0, 1, and 10 for the
 training data fit into the larger picture:
 
-![Batch 0 for LSTM](figures/train%20test%20batches/batch0_with_array.PNG)
-![Batch 1 for LSTM](figures/train%20test%20batches/batch1_with_array.PNG)
-![Batch 10 for LSTM](figures/train%20test%20batches/batch10_with_array.PNG)
+![Batch 0 for LSTM](reports/figures/train%20test%20batches/batch0_with_array.PNG)
+![Batch 1 for LSTM](reports/figures/train%20test%20batches/batch1_with_array.PNG)
+![Batch 10 for LSTM](reports/figures/train%20test%20batches/batch10_with_array.PNG)
 
 My approach to building the 3D arrays for X_train, y_train, X_test, and y_test is to
 create an empty numpy array for each and populate it slice by slice by iterating through the
@@ -578,7 +578,7 @@ for i in range(n_batches):
 
 Your data transformation process should look like:
 
-![Data Transformation](figures/train%20test%20batches/data_transformation.PNG)
+![Data Transformation](reports/figures/train%20test%20batches/data_transformation.PNG)
 
 All of this using dummy data was simply to illustrate the process. For my actual analysis,
 described above, my original data set was 2886 rows and 20 columns after downsampling and
@@ -738,17 +738,17 @@ data to a dataframe for ease of analysis and plotting.
 
 As you can see from the small subset of training data and predictions, the model is likely overfitting.
 
-![Train subset results](figures/train_subset_results.png)
+![Train subset results](reports/figures/train_subset_results.png)
 
 At first glance test results look promising. The predictions seem to follow the general trend but
 miss out on most of the peaks.
 
-![Test results](figures/test_results.png)
+![Test results](reports/figures/test_results.png)
 
 We might consider this a good first try at predicting speed, but inspection of the loss history
 suggests there are bigger issues with the calibration.
 
-![Loss](figures/loss_plot.png)
+![Loss](reports/figures/loss_plot.png)
 
 The test data loss should be decreasing with every epoch, and this plot tells me that additional
 training epochs will not improve the accuracy of the model. Even with an acceptable mean absolute
